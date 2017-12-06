@@ -30,11 +30,11 @@ class MenuRight extends React.Component {
                      <MenuItem>
                         <Badge count={count}>
                             { count >0 ? 
-                            <NavLink to="/shopping/cart">
+                            <NavLink to="/cart">
                             <Icon type="shopping-cart"/>
                             </NavLink>
                             :
-                            <NavLink  to="/shopping/cart">
+                            <NavLink  to="/cart">
                             <Icon style={{color : '#fff', fontSize: 20}} type="shopping-cart"/>
                             </NavLink> 
                         }

@@ -1,32 +1,36 @@
 
 import React from 'react';
 import Iphone from '../../../../../images/iphone7.jpg'
-import { Card, Row, Col ,Tag } from 'antd'
+import { Card, Row, Col ,Tag ,InputNumber } from 'antd'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import { isPrimitive } from 'util';
 import { Button } from 'antd/lib/radio';
-import { addItemToCart} from'../ItemDetailAction'
+import { addItemToCart} from'../../cart/CartAction'
 
 class ItemDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loginInfo:
-                { email: "", password: "", rememberMe: false }
+            value : 1
         };
+    }
+
+    onChangeQty=(value) =>{
+        this.setState({value});
     }
 
 
 
-
-    onAddToCartClick=  (item) =>{
+    onAddToCartClick=  (item,value) =>{
+        item.cartQty = value;
         this.props.addItemToCart(item)
     }
     render() {
         const paramater = this.props.match.params.key
 
         const { item } = this.props;
+        const {value} = this.state;
 
 
         return (
@@ -60,8 +64,8 @@ class ItemDetail extends React.Component {
                                 backgroundColor : 'white'}}
                                 > {item.price}</h1>
                             <br/><br/>
-
-                            <Button size="large" onClick={(e)=>this.onAddToCartClick(item)}> ADD TO CART </Button>
+                            <InputNumber min={1} max={item.quantity} value={value} onChange={this.onChangeQty}/>
+                            <Button size="large" onClick={(e)=>this.onAddToCartClick(item,value)}> ADD TO CART </Button>
                           
                         </Col>
                         <Col span={8}>
