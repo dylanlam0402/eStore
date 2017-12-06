@@ -1,0 +1,64 @@
+app:
+    version: @project.version@
+    file-storage: ./files
+    mail-sender: eStore<lamanhkiet@hcmue-fit.com>
+    async-info:
+        core-pool-size: 4
+        max-pool-size: 64
+        queue-capacity: 100000
+    api-info:
+        title: eStore API
+        description: REST-ful APIs documentation for eStore
+        version: @project.version@
+        contact-name: Kiet Lam
+        contact-url: http://fit.hcmup.edu.vn/
+        contact-email: dylanlam@fit-hcmup.com
+        license: Kiet Lam @Copyright
+    jwt-config:
+      expires-in:  3600 # 30 minutes
+      rememberme-in: 604800 # 7 days
+      secret-key: jztwc6lunayeem3uibhdg6dugazf6mjx
+      header-name: Authorization
+      cookie-name: AUTH-TOKEN
+
+spring:
+    mvc:
+        favicon.enabled: false
+
+    thymeleaf:
+        mode: HTML
+        cache: false
+
+    jackson:
+        serialization.write-dates-as-timestamps: false
+        default-property-inclusion: non_null
+
+    cache:
+        caffeine.spec: maximumSize=256,expireAfterAccess=14400s
+
+    jpa:
+        hibernate.ddl-auto: validate
+
+    datasource:
+       url: jdbc:mysql://localhost:3306/test?zeroDateTimeBehavior=convertToNull
+       username: root
+       password: 1234
+
+
+    mail:
+        host: 192.168.15.29
+        port: 25
+        username: kmslaunch-smtpuser-01
+        password: BJBg3O3zwguMG2pw6dN0
+        properties:
+            mail.transport.protocol: smtp
+            mail.smtp.auth: true
+            mail.smtp.starttls.enable: true
+
+logging:
+    file: logs/estore.log
+    level:
+        root: INFO
+        hcmue.cntt.estore: DEBUG
+
+multipart.maxFileSize: 10Mb
