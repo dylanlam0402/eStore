@@ -3,62 +3,93 @@ import { Icon, Card, Button, Row, Col, InputNumber } from 'antd';
 import Iphone from '../../../../../images/iphone7.jpg'
 import { connect } from 'react-redux'
 
-import {removeItemToCart, addItemToCart} from '../CartAction'
+import { removeItemToCart, addItemToCart, adjustItemToCart } from '../CartAction'
 
 
 
 
 class ItemCart extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            item: props.item 
+        }
     }
 
-    onChange =(item, value)=>{
-        item.cartQty = value;
-        this.props.addItemToCart(item)
+    componentWillReceiveProps = (nextProps)  =>{
+        if(nextProps.item != this.props.item){
+            this.setState({item : nextProps})
+        }
     }
 
-    removeItem=(item)=>{
-        this.props.removeItemToCart(item)
+    onChange = (e, item) => {
+
+        item.cartQty = e;
+        this.props.adjustItemToCart(item);
+        this.setState({ item })
+
+    }
+
+    removeItem = (item) => {
+        this.props.removeItemToCart(item);
+        this.setState({item : {}})
+    
     }
 
     render() {
-        const { item } = this.props
-        return (
+        const { item } = this.state
+        if ( item.typeId === undefined) {
+            return ( <div>
+             
+            </div>)
+        }
+        else {
+            return (
 
-            <Card style={{  textAlign: 'center' }} bodyStyle={{ padding: 0 }}>
+
                 <Row gutter={2}>
-                    <Col span={4}>
-                    <div className="custom-image">
-                        <img alt="iphone" width="100%" src={Iphone} />
-                    </div>
+                    <Col span={5}>
+                        <div className="custom-image">
+                            <img alt="iphone" width="100%" src={Iphone} />
+                        </div>
                     </Col>
-                    <Col span={10}>
+                    <Col span={9}>
+                        <h2>{item.typeId.name}</h2>
+                        <h2>{item.storeId.name}</h2>
+                        <h2>{item.storeId.address}</h2>
                     </Col>
                     <Col span={4}>
+                        <h2> {item.price}</h2>
                     </Col>
                     <Col span={6}>
                         <Row>
-                        <InputNumber style={{width : '100%'}} 
-                        value={item.cartQty} min={1} max={item.quantity}
-                        onChange={(value)=>this.onChange(item,value)}
-                        /> 
+                            <InputNumber style={{ width: '100%' }}
+                                value={item.cartQty} min={1} max={item.quantity}
+                                onChange={(e) => this.onChange(e, item)}
+                            />
                         </Row>
-                        <Row style={{ marginTop : 10, width : '100%'}}>
-                        <Button onClick={(e)=>this.removeItem(item)}> Delete </Button>
+                        <Row style={{ marginTop: 10, width: '100%' }}>
+                            <Button onClick={(e) => this.removeItem(item)}> Delete </Button>
                         </Row>
                     </Col>
                 </Row>
-            </Card>
-        );
+
+
+
+            );
+        }
+
     }
 }
 const mapDispatchToProps = dispatch => ({
-    removeItemToCart : (item) => {
+    removeItemToCart: (item) => {
         dispatch(removeItemToCart(item))
     },
-    addItemToCart : (item)=>{
+    addItemToCart: (item) => {
         dispatch(addItemToCart(item))
-    }
+    },
+    adjustItemToCart: (item) => {
+        dispatch(adjustItemToCart(item))
+    },
 })
-export default connect(null, mapDispatchToProps) (ItemCart); 
+export default connect(null, mapDispatchToProps)(ItemCart); 

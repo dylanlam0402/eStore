@@ -34,32 +34,27 @@ class MenuLeft extends React.Component {
         const { renderMenuItemType, onMenuLeftClick, handleSubmitSearch } = this.props;
 
         return (
-            <div>
-                <Menu
-                    onClick={(e) => { onMenuLeftClick(e) }}
-                    theme="dark"
-                    mode="horizontal"
-                    style={{ lineHeight: '40px', height: 'auto', marginLeft: 200, marginTop: 40 }}
-                >
-                    <Menu.Item key="home" >
-                        <NavLink to="/">
+            <div style={{ display: 'inline-block', 
+            lineHeight: '40px', height: 'auto', 
+            marginLeft: 200, marginTop: 40} }>
+               
+                
+                        <NavLink to="/" >
                             <Icon type="home" />
-                            <span className="nav-text">Home</span>
+                            <span className="nav-text"> Home</span>
                         </NavLink>
-                    </Menu.Item>
-                    <SubMenu title={<span><Icon type="menu-unfold" />Category</span>}>
-                        {renderMenuItemType()}
-                    </SubMenu>
-                    <Menu.Item key="shopnow" >
+                        &nbsp;
+                   
+                
                         <NavLink to="/items">
                             <Icon type="shop" />
-                            <span className="nav-text">Shop Now</span>
+                            <span className="nav-text"> Shop Now</span>
                         </NavLink>
-                    </Menu.Item>
-                    <Menu.Item key="search">
+                        &nbsp;
+                   
                         <AutoComplete
                             size="large"
-                            style={{ width: '100%' }}
+                           
                             dataSource={dataSource.map(this.renderOption)}
                             onSelect={this.onSelect}
                             onSearch={this.handleSearch}
@@ -74,9 +69,9 @@ class MenuLeft extends React.Component {
                                 )}
                             />
                         </AutoComplete>
-                    </Menu.Item>
+                 
 
-                </Menu>
+         
 
             </div>
         );

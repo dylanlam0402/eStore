@@ -81,4 +81,14 @@ public class ItemService extends BaseReturn{
             return Success(result,Constant.GET_SUCCESS);
         }
     }
+    public  ResultDto<Item> getItemById(Long id){
+        Item result = itemRepository.findOne(id);
+        if(result == null){
+            return Fail(result,Constant.GET_FAIL);
+        }
+        else{
+            return Success(result,Constant.GET_SUCCESS);
+        }
+    }
+
 }

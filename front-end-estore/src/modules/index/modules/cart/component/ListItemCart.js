@@ -3,9 +3,12 @@ import {Table , Row,Pagination} from 'antd';
 
 import ItemCart from './ItemCart'
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux';
 class ListItemCart extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+      
+        this.setState({})
     }
 
     state ={
@@ -22,7 +25,7 @@ class ListItemCart extends React.Component {
         const from = to - pageSize;
         for(let i = from; i< to ; i ++ ){
             items[i] !== undefined && listItems.push(
-                <Row>
+                <Row style={{ borderBottom : "1px solid black"}}>
                 <ItemCart item={items[i]}  />
                 </Row>)
         }
@@ -30,7 +33,7 @@ class ListItemCart extends React.Component {
     }
 
     render() {
-        const { items } = this.props
+        const { items } = this.props || [];
         const { pageSize, page} = this.state;
 
         return (
@@ -55,4 +58,5 @@ class ListItemCart extends React.Component {
     }
 }
 
-export default (ListItemCart)
+
+export default  (ListItemCart)

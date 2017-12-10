@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom'
 import { isPrimitive } from 'util';
 import { Button } from 'antd/lib/radio';
 import { addItemToCart} from'../../cart/CartAction'
+import { getItem } from '../ItemAction';
 
 class ItemDetail extends React.Component {
     constructor(props) {
@@ -21,6 +22,10 @@ class ItemDetail extends React.Component {
     }
 
 
+    componentDidMount = ()=>{
+        const paramater = this.props.match.params.key
+        this.props.getItem(paramater);
+    }
 
     onAddToCartClick=  (item,value) =>{
         item.cartQty = value;
@@ -29,8 +34,11 @@ class ItemDetail extends React.Component {
     render() {
         const paramater = this.props.match.params.key
 
-        const { item } = this.props;
+        const { item } = this.props ;
         const {value} = this.state;
+        if(item === undefined) {
+            return (<div>Cannot find product</div>)
+        }
 
 
         return (
@@ -85,53 +93,22 @@ class ItemDetail extends React.Component {
     }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     // Handle state to update UI
-
     return {
-        item: {
-            "id": 2,
-            "createdAt": "2017-12-04T16:01:04",
-            "createdBy": "admin",
-            "modifiedAt": "2017-12-04T16:01:03",
-            "name": "Galaxy S8",
-            "itemCode": "SS01",
-            "quantity": 121,
-            "price": 1221200000,
-            "storeId": {
-                "id": 1,
-                "createdAt": "2017-12-03T15:58:00",
-                "storeCode": "STORE01",
-                "name": "ATT Shop",
-                "address": "123 abc q11 ",
-                "phone": "081236435",
-                "activated": true
-            },
-            "uomId": {
-                "id": 1,
-                "createdAt": "2017-12-03T15:58:00",
-                "name": "Each",
-                "unitAmount": 1
-            },
-            "typeId": {
-                "id": 1,
-                "createdAt": "2017-12-03T15:58:00",
-                "name": "Phone",
-                "description": "phone type",
-                "activated": true
-            },
-            "activated": true,
-            "size": 0,
-            "ranking": 0
-        }
+        item: state.itemReducer.item
 
     }
 
 }
+
 const mapDispatchToProps = dispatch => ({
     addItemToCart: (item) => {
         dispatch(addItemToCart(item))
     },
+    getItem : (id) =>{
+        dispatch(getItem(id));
+    }
 })
 
 export default connect(

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { Layout, Menu, Icon, Badge } from 'antd';
-import {connect } from 'react-redux'
+import { connect } from 'react-redux'
 const MenuItem = Menu.Item;
 const MenuItemGroup = Menu.ItemGroup;
 const SubMenu = Menu.SubMenu;
@@ -12,48 +12,44 @@ class MenuRight extends React.Component {
         super();
     }
 
-    onMenuClick =(e) =>{
+    onMenuClick = (e) => {
         console.log(e.key)
     }
 
 
     render() {
         const { renderMenuItemType, count } = this.props;
-        
+
         return (
-            <div>
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    style={{ right: 0, top: 0, position: 'absolute' }}
-                >
-                     <MenuItem>
-                        <Badge count={count}>
-                            { count >0 ? 
-                            <NavLink to="/cart">
-                            <Icon type="shopping-cart"/>
-                            </NavLink>
-                            :
-                            <NavLink  to="/cart">
-                            <Icon style={{color : '#fff', fontSize: 20}} type="shopping-cart"/>
-                            </NavLink> 
-                        }
-                        </Badge>
-                    </MenuItem>
-                    <MenuItem>
-                        <NavLink to="/">
-                            <Icon type="login" />
-                            <span className="nav-text">Sign Up</span>
+
+            <div style={{ display: 'inline-block', right: 0, top :0, position : 'absolute' }}>
+                <Badge count={count} style={{verticalAlign : 'text-top !important' }}>
+                    {count > 0 ?
+                        <NavLink to="/cart">
+                            <Icon type="shopping-cart" /> My Cart
                         </NavLink>
-                    </MenuItem>
-                    <MenuItem>
-                        <NavLink to="/login">
-                            <Icon type="login" />
-                            <span className="nav-text">Login</span>
+                        :
+                        <NavLink to="/cart">
+                            <Icon style={{ color: '#fff', fontSize: 20 }} type="shopping-cart" /> My Cart
                         </NavLink>
-                    </MenuItem>
-                    
-                </Menu>
+                    }
+                </Badge>
+                &nbsp;
+                &nbsp;
+                <NavLink to="/">
+                    <Icon type="login" />
+                    <span className="nav-text"> Sign Up</span>
+                </NavLink>
+
+                &nbsp;
+                &nbsp;   
+                <NavLink to="/login">
+                    <Icon type="login" />
+                    <span className="nav-text"> Login</span>
+                </NavLink>
+
+
+
 
             </div>
         );
@@ -61,8 +57,8 @@ class MenuRight extends React.Component {
 };
 const mapStateToProps = (state) => {
     return {
-        count :state.cartReducer.count,
-        
+        count: state.cartReducer.count,
+
     }
 }
-export default connect(mapStateToProps)  (MenuRight);
+export default connect(mapStateToProps)(MenuRight);

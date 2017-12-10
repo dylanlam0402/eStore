@@ -17,12 +17,12 @@ class CartLayOut extends React.Component {
         const { children } = this.props
 
         return (
-                <Row gutter={10} >
-                    <Col span={17}>
+                <Row gutter={10}  >
+                    <Col span={17 } style={{background:"white", margin : 10, padding :10}}>
                         {children[0]}
                     </Col>
                   
-                    <Col span={6}>
+                    <Col span={6} style={{background:"white", margin : 10, padding :10}}>
                         {children[1]}
                     </Col>
                 </Row>

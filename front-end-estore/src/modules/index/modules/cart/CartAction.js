@@ -14,3 +14,15 @@ export const removeItemToCart = (item) =>{
         item : item
     }
 }
+export const adjustItemToCart = (item) =>{
+    return {
+        type : ActionType.EDIT_ITEM_TO_CART,
+        item : item
+    }
+}
+export const saveOrder = (customer, order) => ({
+    type: ActionType.SAVE_ORDER,
+    customer: customer,
+    order : order
+});
+

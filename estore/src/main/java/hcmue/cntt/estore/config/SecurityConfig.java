@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .antMatchers("/api/auth/signin","/api/itemtypes/getList","/api/item/getList","/api/item/getBrands")
                 .antMatchers("/api/item/search","api/files/*")
+                .antMatchers("/api/item/getOne")
             .antMatchers(HttpMethod.OPTIONS, "/**")
             .antMatchers("/**/*.{js,html,css}")
             .antMatchers("/favicon.ico");

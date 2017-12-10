@@ -93,22 +93,7 @@ class IndexLayout extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        itemTypes: [
-            {
-                "id": 1,
-                "createdAt": "2017-12-03T15:58:00",
-                "name": "Phone",
-                "description": "phone type",
-                "activated": true
-            },
-            {
-                "id": 2,
-                "createdAt": "2017-12-03T15:58:00",
-                "name": "Tablet",
-                "description": "tablet type",
-                "activated": true
-            }
-        ],
+        itemTypes: state.itemTypeReducer.data,
         
     }
 }

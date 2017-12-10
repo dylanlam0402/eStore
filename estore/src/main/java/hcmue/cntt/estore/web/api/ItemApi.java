@@ -35,6 +35,8 @@ public class ItemApi {
         return itemService.saveItem(item);
     }
 
+
+
     @PostMapping("/getByTypeId")
     public ResultDto<List<Item>> getByTypeId(@RequestBody ItemType itemType){
         return itemService.findByTypeId(itemType);
@@ -54,6 +56,12 @@ public class ItemApi {
     @GetMapping("/getBrands")
     public ResultDto<BrandDto> getBrands(){
         return itemService.getBrand();
+    }
+
+
+    @PostMapping("/getOne")
+    public  ResultDto<Item> getItemById(@RequestBody Item item){
+        return itemService.getItemById(item.getId());
     }
 
     @PostMapping("/search")

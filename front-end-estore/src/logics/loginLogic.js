@@ -30,8 +30,6 @@ const loginLogic = createLogic({
                     else{
                         dispatch({ type: ActionTypes.LOGIN_FAILURE, data: result.errors });
                     }
-                
-               
             }
             else
             {

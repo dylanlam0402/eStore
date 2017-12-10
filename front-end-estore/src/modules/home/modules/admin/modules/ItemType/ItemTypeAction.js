@@ -8,7 +8,7 @@ export const saveItemType = (itemType) => createAction({
     promise: itemTypeService.saveItemType(itemType)
 });
 
-export const getItemTypes =() => createAction({
+export const getItemTypes = () => createAction({
     type : ActionTypes.GET_ITEM_TYPE,
     promise : itemTypeService.getItemTypes()
 })

@@ -1,16 +1,17 @@
 import UserService from './UserService';
-import IssueService from './IssueService'
-import ProjectService from './ProjectService'
-import RoleService from './RoleService'
+
 import ItemTypeService from './ItemTypeService'
+import ItemService from './ItemService'
+import CustomerService from './CustomerService'
+import OrderService from './OrderService'
 
 const userService = new  UserService();
-const issueService = new IssueService();
-const projectService = new ProjectService();
-const roleService = new RoleService();
+const itemService = new ItemService();
+const customerService = new CustomerService();
+const orderService = new OrderService();
 const itemTypeService = new ItemTypeService();
 
 
 export {
-    userService,issueService,projectService,roleService,itemTypeService
+    userService,itemTypeService, itemService, customerService,orderService
 };
