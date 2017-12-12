@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Card, Button, Row, Col, InputNumber } from 'antd';
 import Iphone from '../../../../../images/iphone7.jpg'
 import { connect } from 'react-redux'
-
+import {fileApiURL} from '../../../../../config/webconfig'
 import { removeItemToCart, addItemToCart, adjustItemToCart } from '../CartAction'
 
 
@@ -50,7 +50,7 @@ class ItemCart extends React.Component {
                 <Row gutter={2}>
                     <Col span={5}>
                         <div className="custom-image">
-                            <img alt="iphone" width="100%" src={Iphone} />
+                            <img alt="iphone" width="100%" src={fileApiURL+item.imageUrl} />
                         </div>
                     </Col>
                     <Col span={9}>

@@ -8,6 +8,7 @@ import { isPrimitive } from 'util';
 import { Button } from 'antd/lib/radio';
 import { addItemToCart} from'../../cart/CartAction'
 import { getItem } from '../ItemAction';
+import {fileApiURL} from '../../../../../config/webconfig'
 
 class ItemDetail extends React.Component {
     constructor(props) {
@@ -46,7 +47,7 @@ class ItemDetail extends React.Component {
                 <Card title={item.name} bordered={false} >
                     <Row>
                         <Col span={8}>
-                            <img src="http://localhost:8080/api/files/download.jpg" alt="image" style={{ width: '80%', height: '100%' }} />
+                            <img src={fileApiURL+item.imageUrl} alt="image" style={{ width: '80%', height: '100%' }} />
                         </Col>
                         <Col span={8}>
                             <h1 style={{

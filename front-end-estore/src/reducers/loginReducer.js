@@ -19,13 +19,13 @@ function loginSuccess(state, action)
 
 function loginFailure(state, action)
 {
-  if(action.errors[0].type == ErrorTypes.UNAUTHENTICATION)
+  if(action.data[0].type == ErrorTypes.UNAUTHENTICATION)
   {
-    return Object.assign({}, state, { errors: action.errors, isLoading : false  , isAuthenticated : false});
+    return Object.assign({}, state, { errors: action.data[0], isLoading : false  , isAuthenticated : false});
   }
   else
   {
-    return Object.assign({}, state, { errors: action.errors, isLoading : false  });
+    return Object.assign({}, state, { errors: action.data[0], isLoading : false  });
   }
 }
 

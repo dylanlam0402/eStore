@@ -73,17 +73,17 @@ class EditableCell extends React.Component {
 
 
 
-  handleSelection = (e) => {
+  handleSelection = (e, option) => {
     const selection = e;
     const mode = this.props.input.mode
-    
+    const value = option.filter(item => selection === item.id)[0];
     switch (mode) {
       case 'multiple':
       case 'tags':
         this.saveSelectionValue(selection);
         break;
       default:
-        this.setState({ value : selection })
+        this.setState({ value })
     }
   }
 
@@ -191,7 +191,7 @@ class EditableCell extends React.Component {
       defaultValue = selectedOptions  
     }
     else{
-      defaultValue = values
+      defaultValue = values.id
     }
    
 
@@ -201,7 +201,7 @@ class EditableCell extends React.Component {
           value={defaultValue}
           mode={selectInput.mode || '-'}
           size={options.size}
-          onChange={this.handleSelection}
+          onChange={(e)=>this.handleSelection(e,selectInput.options)}
           placeholder={selectInput.placeholder}
           style={{ width: '100%' }}
           onBlur={selectInput.onBlur || this.onBlurSelection}

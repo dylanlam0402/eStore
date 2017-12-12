@@ -7,7 +7,7 @@ import { Layout } from 'antd';
 
 import Project from '../modules/Project/container/Project'
 import ItemType from '../modules/ItemType/container/ItemType'
-
+import Item from '../modules/Item/container/Item'
 
 class Admin extends React.Component {
     constructor() {
@@ -20,7 +20,8 @@ class Admin extends React.Component {
             <div>
                    
                    <Route path='/admin/itemtype' component={ItemType} />     
-                    <Route path='/admin/project' component={Project} />          
+                    <Route path='/admin/project' component={Project} />         
+                    <Route path='/admin/item' component={Item} />   
             </div>
         )
     }

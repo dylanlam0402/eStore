@@ -25,12 +25,8 @@ const baseLogic = createLogic({
                     }
                     else
                     {
-                      if(result.errors[0].type === ActionTypes.UNAUTHENTICATION)
-                        {
-                            dispatch({ ...rest, type : ActionTypes.UNAUTHENTICATION, errors: result.errors })
-                        }
-
-                        dispatch({ ...rest, type: subType+'_FAILURE', errors: result.errors })
+                     
+                        dispatch({ ...rest, type: subType+'_FAILURE', errors: result.message })
                     }
                     
                 }

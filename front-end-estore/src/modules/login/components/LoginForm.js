@@ -25,7 +25,7 @@ class NormalLoginForm extends React.Component {
       let render = []
       render.push(  
             <div id="loginErrorMessage" style={{color : 'red', width : '100%'}}>
-            <Alert message={this.props.errors[0].message} type="error" showIcon />
+            <Alert message={this.props.errors.type} type="error" showIcon />
             </div>
       )
       return render

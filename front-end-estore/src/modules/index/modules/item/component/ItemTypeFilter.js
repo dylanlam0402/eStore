@@ -28,8 +28,8 @@ class ItemTypeFilter extends React.Component {
         return (
             <div>
                 <Row>
-                    <RadioGroup onChange={onFilterItemType}  >
-                        <Radio  value={itemtypes} style={{display :"block"}}>All</Radio>
+                    <RadioGroup onChange={onFilterItemType} defaultValue={null}>
+                        <Radio  value={null} style={{display :"block"}}>All</Radio>
                         {this.renderRadioItemType(itemtypes) || null}
                     </RadioGroup>
                 </Row>

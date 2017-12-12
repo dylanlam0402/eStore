@@ -29,6 +29,18 @@ function getItemTypeFailure(state, action)
 {
   return Object.assign({}, state, { errors : action.errors, isLoading : false  });
 }
+function deleteItemTypeRequest(state, action)
+{
+  return Object.assign({}, state, {isLoading : true });
+}
+function deleteItemTypeSuccess(state, action)
+{
+  return Object.assign({}, state, {  data : action.data, isLoading : false  });
+}
+function deleteItemTypeFailure(state, action)
+{
+  return Object.assign({}, state, { errors : action.errors, isLoading : false  });
+}
 
 export const itemTypeReducer = createReducer(initialState, {
   [ActionTypes.SAVE_ITEM_TYPE_REQUESTED] : saveItemTypeRequest,
@@ -37,5 +49,8 @@ export const itemTypeReducer = createReducer(initialState, {
   [ActionTypes.GET_ITEM_TYPE_REQUESTED] : getItemTypeRequest,
   [ActionTypes.GET_ITEM_TYPE_SUCCESS] :getItemTypeSuccess,
   [ActionTypes.GET_ITEM_TYPE_FAILURE] : getItemTypeFailure,
+  [ActionTypes.DELETE_ITEM_TYPE_REQUESTED] : deleteItemTypeRequest,
+  [ActionTypes.DELETE_ITEM_TYPE_SUCCESS] :deleteItemTypeSuccess,
+  [ActionTypes.DELETE_ITEM_TYPE_FAILURE] : deleteItemTypeFailure,
 
 });

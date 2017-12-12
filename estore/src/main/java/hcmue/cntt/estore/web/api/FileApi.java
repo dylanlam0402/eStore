@@ -36,6 +36,7 @@ public class FileApi {
 
         String fileName = multipart.getOriginalFilename();
 
+
         File serverFile = new File(getStorageDir(), fileName);
         try (OutputStream outputStream = new FileOutputStream(serverFile)) {
             IOUtils.copy(multipart.getInputStream(), outputStream);

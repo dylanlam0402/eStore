@@ -29,4 +29,9 @@ public class ItemTypeApi {
     public ResultDto<List<ItemType>> getItemTypes(){
         return itemTypeService.getItemTypes();
     }
+
+    @PostMapping(value="/delete")
+    public ResultDto<ItemType> deleteItemType(@RequestBody ItemType itemType){
+        return itemTypeService.delete(itemType);
+    }
 }

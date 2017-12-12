@@ -14,25 +14,25 @@ class AdminSection extends React.Component {
             <div>
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                     <Menu.Item key="1">
-                        <NavLink to="/issue">
+                        <NavLink to="/admin/item">
                             <Icon type="solution" />
-                            <span className="nav-text">List Ticket</span>
+                            <span className="nav-text">List Item</span>
                         </NavLink>
                     </Menu.Item>
-                    <Menu.Item key="2">
+                    {/* <Menu.Item key="2">
                         <NavLink to="/report">
                             <Icon type="line-chart" />
                             <span className="nav-text">Report</span>
                         </NavLink>
-                    </Menu.Item>
+                    </Menu.Item> */}
                     <Menu.Item key="3">
                         <NavLink to="/admin/itemtype">
                             <Icon type="solution" />
                             <span className="nav-text">Item Type</span>
                         </NavLink>
                     </Menu.Item>
-                    <Menu.Item key="4">
-                        <NavLink to="/admin/project">
+                    {/* <Menu.Item key="4">
+                        <NavLink to="/admin/i">
                             <Icon type="bars" />
                             <span className="nav-text">List Project</span>
                         </NavLink>
@@ -48,7 +48,7 @@ class AdminSection extends React.Component {
                             <Icon type="trademark" />
                             <span className="nav-text">List Role</span>
                         </NavLink>
-                    </Menu.Item>
+                    </Menu.Item> */}
 
 
 

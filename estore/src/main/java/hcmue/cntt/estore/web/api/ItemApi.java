@@ -54,7 +54,7 @@ public class ItemApi {
     }
 
     @GetMapping("/getBrands")
-    public ResultDto<BrandDto> getBrands(){
+    public ResultDto<List<String>> getBrands(){
         return itemService.getBrand();
     }
 

@@ -60,15 +60,13 @@ public class ItemService extends BaseReturn{
         }
     }
 
-    public ResultDto<BrandDto> getBrand(){
+    public ResultDto<List<String>> getBrand(){
         List<String> result = itemRepository.getDistinctBrand();
-        BrandDto brandDto = new BrandDto();
-        brandDto.setBrand(result);
         if(result.isEmpty()){
-            return Fail(brandDto,Constant.GET_FAIL);
+            return Fail(result,Constant.GET_FAIL);
         }
         else{
-            return Success(brandDto,Constant.GET_SUCCESS);
+            return Success(result,Constant.GET_SUCCESS);
         }
     }
 

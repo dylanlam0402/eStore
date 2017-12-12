@@ -4,7 +4,7 @@ import Iphone from '../../../../../images/iphone7.jpg'
 import { connect } from 'react-redux'
 import { Col } from 'antd/lib/grid';
 import { Redirect, withRouter } from 'react-router-dom';
-
+import {fileApiURL} from '../../../../../config/webconfig'
 
 
 
@@ -24,7 +24,7 @@ class CardItem extends React.Component {
         return (
             <Card  style={{ width: 240, textAlign : 'center' }} bodyStyle={{ padding: 0 }}>
                 <div className="custom-image">
-                    <img alt="iphone" width="100%" src={Iphone} />
+                    <img alt="iphone" width="200" height="300" src={fileApiURL+item.imageUrl} />
                 </div>
                 <div className="custom-card">
                     <h3>Price : {item.price}</h3>

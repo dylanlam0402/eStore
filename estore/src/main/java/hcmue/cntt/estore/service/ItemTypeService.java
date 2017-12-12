@@ -31,4 +31,11 @@ public class ItemTypeService extends BaseReturn{
         List<ItemType> result = itemTypeRepository.findAll();
         return !result.isEmpty() ? Success(result, Constant.GET_SUCCESS): Fail(result,Constant.GET_FAIL);
     }
+
+    public ResultDto<ItemType> delete(ItemType itemType){
+        this.itemTypeRepository.delete(itemType);
+        return Success(null, "Delete Success");
+    }
+
+
 }

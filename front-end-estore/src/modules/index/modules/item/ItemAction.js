@@ -11,9 +11,19 @@ export const saveItem = (item) => createAction({
 export const getItems = () => createAction({
     type : ActionTypes.GET_ITEMS,
     promise : itemService.getItems()
-})
+});
 
 export const getItem = (id) =>createAction({
     type : ActionTypes.GET_ITEM,
     promise : itemService.getItem(id)
-})
+});
+
+export const getBrands =()=> createAction({
+    type : ActionTypes.GET_BRANDS,
+    promise: itemService.getBrands()
+});
+
+export const filterItem = (itemFilter) => createAction({
+    type : ActionTypes.FILTER_ITEM,
+    promise : itemService.filterItem(itemFilter)
+});

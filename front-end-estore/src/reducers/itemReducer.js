@@ -41,6 +41,33 @@ function getItemsFailure(state, action)
 {
   return Object.assign({}, state, { errors : action.errors, isLoading : false  });
 }
+
+function getBrandsRequest(state, action)
+{
+  return Object.assign({}, state, {isLoading : true });
+}
+function getBrandsSuccess(state, action)
+{
+  return Object.assign({}, state, {  brands : action.data, isLoading : false  });
+}
+function getBrandsFailure(state, action)
+{
+  return Object.assign({}, state, { errors : action.errors, isLoading : false  });
+}
+
+function filterItemRequest(state, action)
+{
+  return Object.assign({}, state, {isLoading : true });
+}
+function filterItemSuccess(state, action)
+{
+  return Object.assign({}, state, {  items : action.data, isLoading : false  });
+}
+function filterItemFailure(state, action)
+{
+  return Object.assign({}, state, { errors : action.errors, items : [], isLoading : false  });
+}
+
 export const itemReducer = createReducer(initialState, {
   [ActionTypes.SAVE_ITEM_REQUESTED] : saveItemRequest,
   [ActionTypes.SAVE_ITEM_SUCCESS] :saveItemSuccess,
@@ -51,4 +78,11 @@ export const itemReducer = createReducer(initialState, {
   [ActionTypes.GET_ITEM_REQUESTED] : getItemRequest,
   [ActionTypes.GET_ITEM_SUCCESS] :getItemSuccess,
   [ActionTypes.GET_ITEM_FAILURE] : getItemFailure,
+  [ActionTypes.GET_BRANDS_REQUESTED] : getBrandsRequest,
+  [ActionTypes.GET_BRANDS_SUCCESS] :getBrandsSuccess,
+  [ActionTypes.GET_BRANDS_FAILURE] : getBrandsFailure,
+  [ActionTypes.FILTER_ITEM_REQUESTED] : filterItemRequest,
+  [ActionTypes.FILTER_ITEM_SUCCESS] :filterItemSuccess,
+  [ActionTypes.FILTER_ITEM_FAILURE] : filterItemFailure,
+
 });

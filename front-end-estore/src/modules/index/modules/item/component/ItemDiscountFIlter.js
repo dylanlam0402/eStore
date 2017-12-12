@@ -19,8 +19,8 @@ class ItemDiscountFIlter extends React.Component {
         return (
             <div>
                 <Row>
-                    <RadioGroup onChange={onFilterItemDiscount}  >
-                        <Radio  value={0} style={{display :"block"}}>All</Radio>
+                    <RadioGroup onChange={onFilterItemDiscount} defaultValue={null} >
+                        <Radio  value={null} style={{display :"block"}}>All</Radio>
                         <Radio  value={40} style={{display :"block"}}>40%</Radio>
                         <Radio  value={30} style={{display :"block"}}>30%</Radio>
                         <Radio  value={10} style={{display :"block"}}>10%</Radio>
