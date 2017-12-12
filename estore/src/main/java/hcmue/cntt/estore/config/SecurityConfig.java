@@ -59,8 +59,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/api/auth/signin","/api/itemtypes/getList","/api/item/getList","/api/item/getBrands")
-                .antMatchers("/api/item/search","api/files/*")
-                .antMatchers("/api/item/getOne")
+                .antMatchers("/api/item/*","api/files/*", "/api/order/*")
+
             .antMatchers(HttpMethod.OPTIONS, "/**")
             .antMatchers("/**/*.{js,html,css}")
             .antMatchers("/favicon.ico");

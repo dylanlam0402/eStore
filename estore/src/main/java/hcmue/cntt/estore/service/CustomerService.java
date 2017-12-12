@@ -23,14 +23,14 @@ public class CustomerService extends BaseReturn {
         List<Customer> result = customerRepository.findAll();
         return !result.isEmpty() ? Success(result, Constant.GET_SUCCESS): Fail(result,Constant.GET_FAIL);
     }
-    public ResultDto saveCustomer(Customer Customer){
+    public ResultDto<Customer> saveCustomer(Customer Customer){
 
         Customer a = this.customerRepository.save(Customer);
         if( a == null){
-            return Fail(Constant.SAVE_FAIL);
+            return Fail(a,Constant.SAVE_FAIL);
         }
         else {
-            return Success(Constant.SAVE_SUCCESS);}
+            return Success(a,Constant.SAVE_SUCCESS);}
 
     }
 

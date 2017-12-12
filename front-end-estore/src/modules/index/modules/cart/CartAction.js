@@ -20,7 +20,7 @@ export const adjustItemToCart = (item) =>{
         item : item
     }
 }
-export const saveOrder = (customer, order) => ({
+export const saveOrder = (customer, order) =>  ( {
     type: ActionType.SAVE_ORDER,
     customer: customer,
     order : order

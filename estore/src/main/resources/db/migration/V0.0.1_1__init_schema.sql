@@ -44,6 +44,62 @@ create table items (
     reset_key VARCHAR(64),
     reset_at TIMESTAMP
 );
+create table store(
+    id BIGINT NOT NULL PRIMARY KEY auto_increment,
+    created_at TIMESTAMP,
+    created_by VARCHAR(32),
+    modified_at TIMESTAMP,
+    modified_by VARCHAR(32),
+
+    store_code VARCHAR(10),
+    name VARCHAR(64),
+    address VARCHAR(64),
+    phone VARCHAR(11),
+    activated BOOL,
+    reset_at TIMESTAMP
+);
+
+create table customer (
+    id BIGINT NOT NULL PRIMARY KEY auto_increment,
+    created_at TIMESTAMP,
+    created_by VARCHAR(32),
+    modified_at TIMESTAMP,
+    modified_by VARCHAR(32),
+
+    first_name VARCHAR (20),
+    last_name VARCHAR (20),
+    address VARCHAR (32),
+    phone_number VARCHAR (11),
+    city VARCHAR (12)
+);
+create table shipper (
+    id BIGINT NOT NULL PRIMARY KEY auto_increment,
+    created_at TIMESTAMP,
+    created_by VARCHAR(32),
+    modified_at TIMESTAMP,
+    modified_by VARCHAR(32),
+
+    name VARCHAR (30),
+    ship_type VARCHAR (30),
+    phone_number VARCHAR (11)
+);
+create table orders (
+    id BIGINT NOT NULL PRIMARY KEY auto_increment,
+    created_at TIMESTAMP,
+    created_by VARCHAR(32),
+    modified_at TIMESTAMP,
+    modified_by VARCHAR(32),
+
+     store_id BIGINT NOT NULL,
+    customer_id BIGINT NOT NULL,
+    order_number INT,
+    payment_id INT,
+    order_date TIMESTAMP,
+    ship_date TIMESTAMP,
+    shipper_id BIGINT NOT NULL,
+    total_price FLOAT ,
+    total_qty INT
+);
 create table item_types (
     id BIGINT NOT NULL PRIMARY KEY auto_increment,
     created_at TIMESTAMP,
@@ -68,23 +124,7 @@ create table uoms (
 );
 
 
-create table `order`(
-	id BIGINT NOT NULL PRIMARY KEY auto_increment,
-    created_at TIMESTAMP,
-    created_by VARCHAR(32),
-    modified_at TIMESTAMP,
-    modified_by VARCHAR(32),
 
-    store_id BIGINT NOT NULL,
-    customer_id BIGINT NOT NULL,
-    order_number INT,
-    payment_id INT,
-    order_date TIMESTAMP,
-    ship_date TIMESTAMP,
-    shipper_id BIGINT NOT NULL,
-    total_price FLOAT ,
-    total_qty INT
-);
 
 create table order_detail (
     id BIGINT NOT NULL PRIMARY KEY auto_increment,
@@ -94,49 +134,12 @@ create table order_detail (
     modified_by VARCHAR(32),
 
     items_id BIGINT NOT  NULL ,
-    order_id BIGINT NOT NULL,
+    orders_id BIGINT NOT NULL,
     qty INT,
     unit_price FLOAT,
     total_price FLOAT
 );
-create table store(
-    id BIGINT NOT NULL PRIMARY KEY auto_increment,
-    created_at TIMESTAMP,
-    created_by VARCHAR(32),
-    modified_at TIMESTAMP,
-    modified_by VARCHAR(32),
 
-    store_code VARCHAR(10),
-    name VARCHAR(64),
-    address VARCHAR(64),
-    phone VARCHAR(11),
-    activated BOOL,
-    reset_at TIMESTAMP
-);
-create table customer (
-    id BIGINT NOT NULL PRIMARY KEY auto_increment,
-    created_at TIMESTAMP,
-    created_by VARCHAR(32),
-    modified_at TIMESTAMP,
-    modified_by VARCHAR(32),
 
-    first_name VARCHAR (20),
-    last_name VARCHAR (20),
-    address VARCHAR (32),
-    phone_number VARCHAR (11),
-    city VARCHAR (12)
-);
-
-create table shipper (
-    id BIGINT NOT NULL PRIMARY KEY auto_increment,
-    created_at TIMESTAMP,
-    created_by VARCHAR(32),
-    modified_at TIMESTAMP,
-    modified_by VARCHAR(32),
-
-    name VARCHAR (30),
-    ship_type VARCHAR (30),
-    phone_number VARCHAR (11)
-);
 create view `sum_sale_item_daily` as
 select items_id, sum(qty) as count from test.order_detail group by items_id

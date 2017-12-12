@@ -18,7 +18,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@Table(name = "order")
+@Table(name = "orders")
 @Entity
 public class Order extends BaseEntity{
 
@@ -38,7 +38,7 @@ public class Order extends BaseEntity{
 
     private Date shipDate;
 
-    @NotNull
+
     @ManyToOne
     @JoinColumn(name= "shipper_id")
     private Shipper shipperId;

@@ -20,7 +20,10 @@ const orderLogic = createLogic({
         api.services.customerService.saveCustomer(action.customer)
         .then(result => {
            if(result.success){
-                api.services.saveOrder(action.order).then(result=>{
+                let orderDto  = action.order;
+                orderDto.order.customerId = result.data
+            
+                api.services.orderService.saveOrder(orderDto).then(result=>{
                     if(result.success){
                         dispatch({ type: ActionTypes.SAVE_ORDER_SUCCESS, data : result.data });
                     }

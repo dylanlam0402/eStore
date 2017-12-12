@@ -22,3 +22,4 @@ VALUES ('Package', 1);
 
 INSERT INTO  items(`name`,quantity,price,store_id,uoms_id,item_types_id,activated,item_code,ranking,`size`)
 VALUES ('Galaxy S7', 12,1200000,1,1,1,true,'SS01',0,0);
+INSERT INTO `test`.`shipper` (`name`, `ship_type`, `phone_number`) VALUES ('GHN', '1', '113');

@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class OrderDetail extends BaseEntity{
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "orders_id")
     private Order orderId ;
 
     @ManyToOne

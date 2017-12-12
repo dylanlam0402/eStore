@@ -24,7 +24,7 @@ public class CustomerApi {
         return customerService.getCustomers();
     }
     @PostMapping("/save")
-    public ResultDto<List<Customer>> saveCustomer(@RequestBody Customer item) {
+    public ResultDto<Customer> saveCustomer(@RequestBody Customer item) {
         return customerService.saveCustomer(item);
     }
 
