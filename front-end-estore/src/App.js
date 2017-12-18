@@ -19,6 +19,9 @@ import enUS from 'antd/lib/locale-provider/en_US';
 class App extends React.Component {
 
 
+  componentDidCatch  =()=>{
+    return(<div> A Page Has Errors </div>);
+  }
   render() {
 
     

@@ -27,6 +27,7 @@ class CardItem extends React.Component {
                     <img alt="iphone" width="200" height="300" src={fileApiURL+item.imageUrl} />
                 </div>
                 <div className="custom-card">
+                    <h3>Price : {item.name}</h3>
                     <h3>Price : {item.price}</h3>
                     <p> Stock : {item.quantity}</p>
                     <Button type="primary" onClick={(e)=>{this.onClickBuy(e,item)}}> Buy Now </Button>

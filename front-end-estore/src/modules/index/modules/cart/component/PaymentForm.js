@@ -58,8 +58,13 @@ class PaymentForm extends React.Component {
                     <FormItem>
                         {getFieldDecorator('city', {
                             rules: [{ required: true, message: message }],
+                            initialValue : 'TPHCM'
                         })(
-                            <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="City" />
+                            <Select style={{ width: '100%' }} >
+                                <Option value={"TPHCM"}> TP.HCM </Option>
+                                <Option value={"Hà Nội"}> Hà Nội </Option>
+                                <Option value={"Đà Nẵng"}> Đà Nẵng </Option>
+                            </Select>
                             )}
                     </FormItem>
                     <FormItem>

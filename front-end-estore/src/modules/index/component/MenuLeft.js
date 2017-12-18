@@ -52,7 +52,7 @@ class MenuLeft extends React.Component {
                         </NavLink>
                         &nbsp;
                    
-                        <AutoComplete
+                        {/* <AutoComplete
                             size="large"
                            
                             dataSource={dataSource.map(this.renderOption)}
@@ -68,7 +68,7 @@ class MenuLeft extends React.Component {
                                     </Button>
                                 )}
                             />
-                        </AutoComplete>
+                        </AutoComplete> */}
                  
 
          

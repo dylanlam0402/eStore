@@ -83,6 +83,9 @@ export default class  {
      
         
         return Promise.resolve($.ajax(final)).catch(ex => { 
+            if( ex.responseJSON === null){
+                return{};
+            }
             return {
                 data: null,
                 errors: [ { key: ex.responseJSON.code, type: ex.responseJSON.message, message: ex.responseJSON.details }],
